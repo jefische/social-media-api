@@ -18,15 +18,19 @@ import org.springframework.http.ResponseEntity;
 
 import com.portfolio.social_media_api.Exceptions.DuplicateUsernameException;
 import com.portfolio.social_media_api.Model.Account;
+import com.portfolio.social_media_api.Model.Message;
 import com.portfolio.social_media_api.Service.AccountService;
+import com.portfolio.social_media_api.Service.MessageService;
 
 @RestController
 public class SocialMediaController {
 
 	private AccountService accountService;
+	private MessageService messageService;
 
-	public SocialMediaController(AccountService accountService) {
+	public SocialMediaController(AccountService accountService, MessageService messageService) {
 		this.accountService = accountService;
+		this.messageService = messageService;
 	}
 
     @PostMapping(value = "/register")
@@ -47,6 +51,13 @@ public class SocialMediaController {
 		Account aLogin = accountService.accountLogin(account.getUsername(), account.getPassword());
 
 		return ResponseEntity.status(200).body(aLogin);
+	}
+
+	@PostMapping("messages")
+    public ResponseEntity<Message> createMessage(@RequestBody Message message) {
+		Message aMessage = messageService.addMessage(message);
+
+		return ResponseEntity.status(200).body(aMessage);
 	}
     
 }
