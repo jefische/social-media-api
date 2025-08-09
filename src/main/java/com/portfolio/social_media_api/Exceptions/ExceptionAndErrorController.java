@@ -26,4 +26,9 @@ public class ExceptionAndErrorController {
 	public ResponseEntity<String> handleInvalidLogin(AuthenticationException ex) {
 		return ResponseEntity.status(401).body(ex.getMessage());
 	}
+
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<String> handleInvalidMessage(IllegalArgumentException ex) {
+		return ResponseEntity.status(400).body(ex.getMessage());
+	}
 }

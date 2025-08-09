@@ -15,6 +15,9 @@ public class MessageService {
     }
 
     public Message addMessage(Message message) {
+		if (message.getMessageText().trim().isEmpty()) {
+			throw new IllegalArgumentException("Message text is empty");
+		}
         return messageRepository.save(message);
     }
 }
