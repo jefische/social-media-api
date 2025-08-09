@@ -1,11 +1,11 @@
 package com.portfolio.social_media_api.Model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * This is a class that models an Account.
  *
- * You should NOT make any modifications to this class.
+ * Create a class and annotate it with @Entity. This is to denote that this class will be mapped to a database table.
  */
 @Entity
 @Table(name="account")
