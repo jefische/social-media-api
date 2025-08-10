@@ -9,7 +9,7 @@ import com.portfolio.social_media_api.Exceptions.InvalidAccountException;
 import com.portfolio.social_media_api.Model.Account;
 import com.portfolio.social_media_api.Repository.AccountRepository;
 
-import java.util.Optional;
+// import java.util.Optional;
 // import java.util.List;
 
 import javax.naming.AuthenticationException;

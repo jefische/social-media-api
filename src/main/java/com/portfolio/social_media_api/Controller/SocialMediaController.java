@@ -1,11 +1,17 @@
 package com.portfolio.social_media_api.Controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.stereotype.Controller;
 // import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 import javax.naming.AuthenticationException;
 
@@ -59,6 +65,32 @@ public class SocialMediaController {
 
 		return ResponseEntity.status(200).body(aMessage);
 	}
-    
+
+	@GetMapping("messages")
+	public ResponseEntity<List<Message>> getMessages() {
+		List<Message> messages = messageService.getMessages();
+		return ResponseEntity.status(200).body(messages);
+	}
+
+	@GetMapping("messages/{messageId}")
+    public ResponseEntity<Message> getMessageById(@PathVariable Integer messageId) {
+        Message message = messageService.getMessageById(messageId);
+        return ResponseEntity.status(200).body(message);
+    }
+
+	@DeleteMapping("messages/{messageId}")
+    public ResponseEntity<Integer> deleteMessageById(@PathVariable Integer messageId) {
+        Boolean messageDeleted = messageService.deleteMessageById(messageId);
+        return messageDeleted ? ResponseEntity.status(200).body(1) :
+                                ResponseEntity.status(200).build();
+    }
+
+	@PatchMapping("messages/{messageId}")
+    public ResponseEntity<Integer> updateMessageById(@RequestBody String messageText, @PathVariable Integer messageId ) {
+        Boolean messageUpdated = messageService.updateMessageById(messageId, messageText);
+        return messageUpdated ? ResponseEntity.status(200).body(1) :
+                                ResponseEntity.status(400).build();
+    }
+
 }
 

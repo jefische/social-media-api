@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 @Data
 public class Message {
 
+	// @GeneratedValue
 	@Column (name="messageId")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
