@@ -1,32 +1,25 @@
 package com.portfolio.social_media_api.Controller;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
-
-import javax.naming.AuthenticationException;
-
-import org.springframework.http.HttpStatus;
-// import org.springframework.web.server.ResponseStatusException;
-// import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.http.HttpStatus;
 
 import com.portfolio.social_media_api.Exceptions.DuplicateUsernameException;
 import com.portfolio.social_media_api.Model.Account;
 import com.portfolio.social_media_api.Model.Message;
 import com.portfolio.social_media_api.Service.AccountService;
 import com.portfolio.social_media_api.Service.MessageService;
+import com.portfolio.social_media_api.DTO.UpdateMessageRequest;
+
+import java.util.List;
+import javax.naming.AuthenticationException;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.http.ResponseEntity;
 
 @RestController
 public class SocialMediaController {
@@ -86,10 +79,16 @@ public class SocialMediaController {
     }
 
 	@PatchMapping("messages/{messageId}")
-    public ResponseEntity<Integer> updateMessageById(@RequestBody String messageText, @PathVariable Integer messageId ) {
-        Boolean messageUpdated = messageService.updateMessageById(messageId, messageText);
+    public ResponseEntity<Integer> updateMessageById(@RequestBody UpdateMessageRequest request, @PathVariable Integer messageId ) {
+        Boolean messageUpdated = messageService.updateMessageById(messageId, request.getMessageText());
         return messageUpdated ? ResponseEntity.status(200).body(1) :
                                 ResponseEntity.status(400).build();
+    }
+
+	@GetMapping("accounts/{accountId}/messages")
+    public ResponseEntity<List<Message>> getAllMessagesById(@PathVariable Integer accountId) {
+        List<Message> messages = messageService.getAllMessagesById(accountId);
+        return ResponseEntity.status(200).body(messages);
     }
 
 }
