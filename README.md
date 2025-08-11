@@ -61,7 +61,7 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 ```bash
 	curl -X POST http://localhost:8080/register \
 	-H "Content-Type: application/json" \
-	-d '{"name": "John Doe", "email": "john@example.com"}'
+	-d '{"username": "JohnDoe", "password": "johnTheGiant"}'
 
 ---
 
@@ -81,4 +81,3 @@ src/
 │ └── resources/
 │ └── application.yml
 └── test/
-└── java/
