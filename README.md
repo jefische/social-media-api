@@ -1,6 +1,6 @@
 # Social Media API
 
-A hands-on Java Spring Boot project that implements a simple, RESTful backend API for managing users and posts. Built to demonstrate proficiency in API-driven services, layered architecture, problem-solving, and backend fundamentals.
+A hands-on Java Spring Boot project that implements a simple, RESTful backend API for managing accounts and messages. Built to demonstrate proficiency in API-driven services, layered architecture, problem-solving, and backend fundamentals.
 
 ---
 
@@ -57,7 +57,7 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 	| PATCH   | `/messages/{messageId}`             | Update a message         |
 	| GET     | `/accounts/{accountId}/messages`    | Fetch user messages      |
 
-**Example curl request:**
+	**Example curl request:**
 ```bash
 	curl -X POST http://localhost:8080/register \
 	-H "Content-Type: application/json" \
