@@ -52,6 +52,23 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 	PATCH /messages/{messageId}           → Update message text
 	GET /accounts/{accountId}/messages    → Fetch user's messages
 	
+
+	
+**Endpoints:**
+
+| Method | Endpoint              | Description              |
+|--------|-----------------------|--------------------------|
+| POST   | `/users`               | Create a new user        |
+| GET    | `/users/{id}`          | Fetch a user by ID       |
+| GET    | `/users/{id}/posts`    | Fetch all posts by user  |
+| POST   | `/posts`               | Create a new post        |
+
+**Example curl request:**
+```bash
+	curl -X POST http://localhost:8080/users \
+	-H "Content-Type: application/json" \
+	-d '{"name": "John Doe", "email": "john@example.com"}'
+
 ---
 
 ## Project Structure
@@ -65,3 +82,16 @@ src/
 ├── model/       → Entity definitions (Account, Message)
 └── exception/   → Custom exceptions & error handlers
 
+src/
+├── main/
+│ ├── java/
+│ │ └── com.example.socialmedia/
+│ │ ├── controller/ # Request handlers
+│ │ ├── service/ # Business logic & validation
+│ │ ├── repository/ # JPA-based database access
+│ │ ├── model/ # Entity definitions (User, Post)
+│ │ └── exception/ # Custom exceptions & error handlers
+│ └── resources/
+│ └── application.yml
+└── test/
+└── java/
