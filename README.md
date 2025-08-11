@@ -62,13 +62,13 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 	curl -X POST http://localhost:8080/register \
 	-H "Content-Type: application/json" \
 	-d '{"username": "JohnDoe", "password": "johnTheGiant"}'
-
+```
 ---
 
 ## Project Structure
 
 This project was initialized and scaffolded using the VS Code spring boot extension
-
+```
 src/
 ├── main/
 │ ├── java/
@@ -81,3 +81,5 @@ src/
 │ └── resources/
 │ └── application.yml
 └── test/
+```
+---
