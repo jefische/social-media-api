@@ -23,8 +23,8 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 
 - **Error Handling & Validation**  
   Includes resource validation and clean error responses—for example:
-  - `201 Created` for successful creations
-  - `404 Not Found` for missing resources
+  - `401 Unauthorized` for incorrect username and password
+  - `409 Conflict` for duplicate username on registration
   - Custom exceptions and global exception handling to improve API reliability
 
 - **Testing & Local Development**  
@@ -45,17 +45,17 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 
 3. Test endpoints via Postman or curl:
 
-**Endpoints:**
+	**Endpoints:**
 
-| Method  | Endpoint                            | Description              |
-|---------|-------------------------------------|--------------------------|
-| POST    | `/register`                         | Create new user account  |
-| POST    | `/login`                            | User login               |
-| POST    | `/messages`                         | Create new message       |
-| GET     | `/messages`                         | Fetch all messages       |
-| DELETE  | `/messages/{messageId}`             | Delete a message         |
-| PATCH   | `/messages/{messageId}`             | Update a message         |
-| GET     | `/accounts/{accountId}/messages`    | Fetch user messages      |
+	| Method  | Endpoint                            | Description              |
+	|---------|-------------------------------------|--------------------------|
+	| POST    | `/register`                         | Create new user account  |
+	| POST    | `/login`                            | User login               |
+	| POST    | `/messages`                         | Create new message       |
+	| GET     | `/messages`                         | Fetch all messages       |
+	| DELETE  | `/messages/{messageId}`             | Delete a message         |
+	| PATCH   | `/messages/{messageId}`             | Update a message         |
+	| GET     | `/accounts/{accountId}/messages`    | Fetch user messages      |
 
 **Example curl request:**
 ```bash
@@ -70,21 +70,14 @@ A hands-on Java Spring Boot project that implements a simple, RESTful backend AP
 This project was initialized and scaffolded using the VS Code spring boot extension
 
 src/
-├── controller/  → Request handlers
-├── service/     → Business logic & validation
-├── repository/  → JPA-based database access
-├── model/       → Entity definitions (Account, Message)
-└── exception/   → Custom exceptions & error handlers
-
-src/
 ├── main/
 │ ├── java/
 │ │ └── com.example.socialmedia/
-│ │ ├── controller/ → Request handlers
-│ │ ├── service/    → Business logic & validation
-│ │ ├── repository/ # JPA-based database access
-│ │ ├── model/ # Entity definitions (User, Post)
-│ │ └── exception/ # Custom exceptions & error handlers
+│ │ ├── controller/   → Request handlers
+│ │ ├── service/      → Business logic & validation
+│ │ ├── repository/   → JPA-based database access
+│ │ ├── model/        → Entity definitions (Account, Message)
+│ │ └── exception/    → Custom exceptions & error handlers
 │ └── resources/
 │ └── application.yml
 └── test/
