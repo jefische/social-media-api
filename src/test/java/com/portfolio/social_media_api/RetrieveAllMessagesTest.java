@@ -13,10 +13,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.TestPropertySource;
+// import org.springframework.boot.test.context.SpringBootTest;
+// import org.springframework.boot.test.web.server.LocalServerPort;
+// import org.springframework.test.context.TestPropertySource;
 
 import com.portfolio.social_media_api.Model.Message;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -47,25 +47,18 @@ public class RetrieveAllMessagesTest {
     public void tearDown() throws InterruptedException {
     	Thread.sleep(500);
     	SpringApplication.exit(app);
-    }
-
-	// @LocalServerPort
-    // private int port;
-
-    private String getBaseUrl() {
-        return "http://localhost:8080";
-    }
+	}
     
     @Test
     public void getAllMessagesAvailable() throws IOException, InterruptedException {
-		// HttpClient webClient = HttpClient.newHttpClient();
-        // ObjectMapper objectMapper = new ObjectMapper();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(getBaseUrl() + "/messages"))
+                .uri(URI.create("http://localhost:8080/messages"))
                 .build();
         HttpResponse<String> response = webClient.send(request, HttpResponse.BodyHandlers.ofString());
         int status = response.statusCode();
+		System.out.println("Printing to debug...");
+		System.out.println("Response body: " + response.body());
         Assertions.assertEquals(200, status, "Expected Status Code 200 - Actual Code was: " + status);
 
         List<Message> expectedResult = new ArrayList<Message>();
