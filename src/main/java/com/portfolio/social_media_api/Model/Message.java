@@ -35,37 +35,37 @@ public class Message {
         this.timePostedEpoch = timePostedEpoch;
     }
 
-	// @Override
-	// public boolean equals(Object obj) {
-	// 	if (this == obj)
-	// 		return true;
-	// 	if (obj == null)
-	// 		return false;
-	// 	if (getClass() != obj.getClass())
-	// 		return false;
-	// 	Message other = (Message) obj;
-	// 	if (messageId == null) {
-	// 		if (other.messageId != null)
-	// 			return false;
-	// 	} else if (!messageId.equals(other.messageId))
-	// 		return false;
-	// 	if (messageText == null) {
-	// 		if (other.messageText != null)
-	// 			return false;
-	// 	} else if (!messageText.equals(other.messageText))
-	// 		return false;
-	// 	if (postedBy == null) {
-	// 		if (other.postedBy != null)
-	// 			return false;
-	// 	} else if (!postedBy.equals(other.postedBy))
-	// 		return false;
-	// 	if (timePostedEpoch == null) {
-	// 		if (other.timePostedEpoch != null)
-	// 			return false;
-	// 	} else if (!timePostedEpoch.equals(other.timePostedEpoch))
-	// 		return false;
-	// 	return true;
-	// }
+//	 @Override
+//	 public boolean equals(Object obj) {
+//	 	if (this == obj)
+//	 		return true;
+//	 	if (obj == null)
+//	 		return false;
+//	 	if (getClass() != obj.getClass())
+//	 		return false;
+//	 	Message other = (Message) obj;
+//	 	if (messageId == null) {
+//	 		if (other.messageId != null)
+//	 			return false;
+//	 	} else if (!messageId.equals(other.messageId))
+//	 		return false;
+//	 	if (messageText == null) {
+//	 		if (other.messageText != null)
+//	 			return false;
+//	 	} else if (!messageText.equals(other.messageText))
+//	 		return false;
+//	 	if (postedBy == null) {
+//	 		if (other.postedBy != null)
+//	 			return false;
+//	 	} else if (!postedBy.equals(other.postedBy))
+//	 		return false;
+//	 	if (timePostedEpoch == null) {
+//	 		if (other.timePostedEpoch != null)
+//	 			return false;
+//	 	} else if (!timePostedEpoch.equals(other.timePostedEpoch))
+//	 		return false;
+//	 	return true;
+//	 }
 
     @Override
     public String toString() {
